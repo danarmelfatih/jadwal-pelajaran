@@ -162,6 +162,15 @@
                 bsAlert.close();
             });
         }, 5000);
+
+        // Optional: Jika ingin sidebar bisa toggle di mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.querySelector('.sidebar');
+            const main = document.querySelector('main');
+
+            // Contoh: Toggle sidebar di mobile (jika butuh)
+            // Anda bisa tambahkan button toggle di navbar
+        });
     </script>
 </body>
 </html>

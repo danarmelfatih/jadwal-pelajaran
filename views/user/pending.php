@@ -1,4 +1,4 @@
-<?php include 'views/layouts/header.php'; ?>
+<?php include __DIR__ . '/../layouts/header.php'; ?>
 
 <div class="container-fluid px-4">
     <h1 class="mt-4">Verifikasi Pendaftaran Guru</h1>
@@ -35,12 +35,12 @@
     <div class="card mb-4">
         <div class="card-header bg-warning text-dark">
             <i class="bi bi-person-check"></i> Daftar Guru Menunggu Verifikasi
-            <?php if (count($pending_users) > 0): ?>
+            <?php if (isset($pending_users) && count($pending_users) > 0): ?>
                 <span class="badge bg-danger"><?= count($pending_users) ?></span>
             <?php endif; ?>
         </div>
         <div class="card-body">
-            <?php if (count($pending_users) > 0): ?>
+            <?php if (isset($pending_users) && count($pending_users) > 0): ?>
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
                         <thead class="table-dark">
@@ -61,7 +61,7 @@
                                     <td><strong><?= htmlspecialchars($user['username']) ?></strong></td>
                                     <td><?= htmlspecialchars($user['nama_lengkap']) ?></td>
                                     <td><?= htmlspecialchars($user['email']) ?></td>
-                                    <td><?= htmlspecialchars($user['no_telepon']) ?: '-' ?></td>
+                                    <td><?= htmlspecialchars($user['no_telepon'] ?? '-') ?></td>
                                     <td><?= date('d/m/Y H:i', strtotime($user['created_at'])) ?></td>
                                     <td>
                                         <a href="index.php?page=user-verify&id=<?= $user['id'] ?>" 
@@ -111,4 +111,4 @@
     </div>
 </div>
 
-<?php include 'views/layouts/footer.php'; ?>
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

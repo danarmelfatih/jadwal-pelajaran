@@ -17,90 +17,83 @@
     <?php endif; ?>
 
     <!-- Statistik Cards -->
-    <div class="row">
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-primary text-white mb-4">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <div class="text-white-50 small">Total Guru</div>
-                            <div class="h2"><?= $total_guru ?></div>
-                        </div>
-                        <i class="bi bi-people" style="font-size: 3rem; opacity: 0.3;"></i>
+    <div class="row mb-4">
+        <div class="col-xl-3 col-lg-6 col-md-6 mb-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-0">Total Guru</h6>
+                        <h2 class="mb-0"><?= $total_guru ?></h2>
                     </div>
+                    <i class="bi bi-people" style="font-size: 3rem; opacity: 0.3;"></i>
                 </div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <small>Data Guru Aktif</small>
-                    <i class="bi bi-arrow-right"></i>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <small class="text-white-50">Data Guru Aktif</small>
+                    <i class="bi bi-arrow-right text-white-50"></i>
                 </div>
             </div>
         </div>
 
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-success text-white mb-4">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <div class="text-white-50 small">Mata Pelajaran</div>
-                            <div class="h2"><?= $total_mapel ?></div>
-                        </div>
-                        <i class="bi bi-book" style="font-size: 3rem; opacity: 0.3;"></i>
+        <div class="col-xl-3 col-lg-6 col-md-6 mb-3">
+            <div class="card bg-success text-white">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-0">Mata Pelajaran</h6>
+                        <h2 class="mb-0"><?= $total_mapel ?></h2>
                     </div>
+                    <i class="bi bi-book" style="font-size: 3rem; opacity: 0.3;"></i>
                 </div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <small>Total Mata Pelajaran</small>
-                    <i class="bi bi-arrow-right"></i>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <small class="text-white-50">Total Mata Pelajaran</small>
+                    <i class="bi bi-arrow-right text-white-50"></i>
                 </div>
             </div>
         </div>
 
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-warning text-white mb-4">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <div class="text-white-50 small">Total Kelas</div>
-                            <div class="h2"><?= $total_kelas ?></div>
-                        </div>
-                        <i class="bi bi-door-open" style="font-size: 3rem; opacity: 0.3;"></i>
+        <div class="col-xl-3 col-lg-6 col-md-6 mb-3">
+            <div class="card bg-warning text-white">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-0">Total Kelas</h6>
+                        <h2 class="mb-0"><?= $total_kelas ?></h2>
                     </div>
+                    <i class="bi bi-door-open" style="font-size: 3rem; opacity: 0.3;"></i>
                 </div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <small>Kelas Aktif</small>
-                    <i class="bi bi-arrow-right"></i>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <small class="text-white-50">Kelas Aktif</small>
+                    <i class="bi bi-arrow-right text-white-50"></i>
                 </div>
             </div>
         </div>
 
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-danger text-white mb-4">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <div class="text-white-50 small">Total Jadwal</div>
-                            <div class="h2"><?= $total_jadwal ?></div>
-                        </div>
-                        <i class="bi bi-calendar-event" style="font-size: 3rem; opacity: 0.3;"></i>
+        <div class="col-xl-3 col-lg-6 col-md-6 mb-3">
+            <div class="card bg-danger text-white">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-0">Total Jadwal</h6>
+                        <h2 class="mb-0"><?= $total_jadwal ?></h2>
                     </div>
+                    <i class="bi bi-calendar-event" style="font-size: 3rem; opacity: 0.3;"></i>
                 </div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <small>Semua Jadwal</small>
-                    <i class="bi bi-arrow-right"></i>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <small class="text-white-50">Semua Jadwal</small>
+                    <i class="bi bi-arrow-right text-white-50"></i>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Jadwal Hari Ini -->
-    <div class="card mb-4">
-        <div class="card-header bg-primary text-white">
-            <i class="bi bi-calendar-day"></i> Jadwal Hari Ini - <?= date('d F Y') ?>
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white d-flex align-items-center">
+            <i class="bi bi-calendar-day me-2"></i>
+            <h5 class="mb-0">Jadwal Hari Ini - <?= date('d F Y') ?></h5>
         </div>
         <div class="card-body">
             <?php if (count($jadwal_today) > 0): ?>
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover">
-                        <thead>
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
                             <tr>
                                 <th>Jam</th>
                                 <th>Waktu</th>
@@ -133,8 +126,9 @@
                     </table>
                 </div>
             <?php else: ?>
-                <div class="alert alert-info">
-                    <i class="bi bi-info-circle"></i> Tidak ada jadwal untuk hari ini.
+                <div class="text-center py-4">
+                    <i class="bi bi-info-circle text-info" style="font-size: 3rem;"></i>
+                    <p class="mt-2 text-muted">Tidak ada jadwal untuk hari ini.</p>
                 </div>
             <?php endif; ?>
         </div>

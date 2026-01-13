@@ -1,4 +1,9 @@
-<?php include 'views/layouts/header.php'; ?>
+<?php 
+include 'views/layouts/header.php'; 
+
+// Debug: Uncomment baris di bawah untuk melihat role user
+// echo "Role: " . $_SESSION['role'];
+?>
 
 <div class="container-fluid px-4">
     <h1 class="mt-4">Manajemen Jadwal Pelajaran</h1>
@@ -33,16 +38,22 @@
     <?php endif; ?>
 
     <div class="card mb-4">
-        <div class="card-header">
-            <div class="row">
+        <div class="card-header bg-white">
+            <div class="row align-items-center">
                 <div class="col-md-6">
-                    <i class="bi bi-table"></i> Data Jadwal Pelajaran
+                    <h5 class="mb-0">
+                        <i class="bi bi-table"></i> Data Jadwal Pelajaran
+                    </h5>
                 </div>
                 <div class="col-md-6 text-end">
-                    <?php if ($_SESSION['role'] == 'admin'): ?>
-                        <a href="index.php?page=jadwal-create" class="btn btn-primary btn-sm">
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
+                        <a href="index.php?page=jadwal-create" class="btn btn-primary">
                             <i class="bi bi-plus-circle"></i> Tambah Jadwal
                         </a>
+                    <?php else: ?>
+                        <span class="badge bg-secondary">
+                            <i class="bi bi-info-circle"></i> Hanya Admin yang dapat menambah jadwal
+                        </span>
                     <?php endif; ?>
                 </div>
             </div>
@@ -91,8 +102,8 @@
                             <th>Guru</th>
                             <th>Ruangan</th>
                             <th>Status</th>
-                            <?php if ($_SESSION['role'] == 'admin'): ?>
-                                <th>Aksi</th>
+                            <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
+                                <th width="150">Aksi</th>
                             <?php endif; ?>
                         </tr>
                     </thead>
@@ -122,7 +133,7 @@
                                             <span class="badge bg-success">Normal</span>
                                         <?php endif; ?>
                                     </td>
-                                    <?php if ($_SESSION['role'] == 'admin'): ?>
+                                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
                                         <td>
                                             <a href="index.php?page=jadwal-edit&id=<?= $jadwal['id'] ?>" 
                                                class="btn btn-warning btn-sm" title="Edit">

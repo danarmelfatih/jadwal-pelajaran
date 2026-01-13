@@ -12,25 +12,35 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden; /* Hindari scroll horizontal */
         }
+
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+            z-index: 1000; /* Pastikan navbar di atas semua */
+        }
+
         .sidebar {
             position: fixed;
             top: 0;
             bottom: 0;
             left: 0;
-            z-index: 100;
-            padding: 56px 0 0;
-            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+            z-index: 999; /* Sidebar di bawah navbar */
+            padding-top: 56px; /* Sesuaikan dengan height navbar */
+            width: 250px;
             background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+            transition: all 0.3s ease;
         }
+
         .sidebar-sticky {
             position: relative;
             top: 0;
             height: calc(100vh - 56px);
-            padding-top: .5rem;
-            overflow-x: hidden;
+            padding: 1rem 0;
             overflow-y: auto;
         }
+
         .sidebar .nav-link {
             font-weight: 500;
             color: rgba(255, 255, 255, .8);
@@ -39,31 +49,66 @@
             border-radius: 8px;
             transition: all 0.3s;
         }
+
         .sidebar .nav-link:hover {
             color: #fff;
             background-color: rgba(255, 255, 255, .1);
         }
+
         .sidebar .nav-link.active {
             color: #fff;
             background-color: rgba(255, 255, 255, .2);
         }
+
         .sidebar .nav-link i {
             margin-right: 10px;
         }
-        .navbar {
-            box-shadow: 0 2px 4px rgba(0,0,0,.1);
-        }
+
+        /* Main Content - PASTIKAN TIDAK TERTINDIH SIDEBAR */
         main {
             margin-left: 250px;
-            padding-top: 56px;
+            padding: 56px 20px 20px 20px; /* Padding-top = height navbar */
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            transition: margin-left 0.3s ease;
         }
+
+        /* Untuk responsive: sembunyikan sidebar di mobile */
         @media (max-width: 768px) {
             .sidebar {
                 display: none;
             }
             main {
                 margin-left: 0;
+                padding: 56px 15px 15px 15px;
             }
+        }
+
+        /* Tambahan: agar kartu & tabel tidak overflow */
+        .card {
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        /* Header table lebih ringan */
+        .table thead th {
+            background-color: #f8f9fa;
+            color: #212529;
+            font-weight: 600;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f3f5;
         }
     </style>
 </head>
@@ -114,7 +159,6 @@
                            href="index.php?page=user-pending">
                             <i class="bi bi-person-check"></i> Verifikasi Guru
                             <?php 
-                            // Tampilkan badge jika ada pending
                             require_once 'models/User.php';
                             $database = new Database();
                             $db = $database->getConnection();
@@ -150,18 +194,3 @@
     <main>
 
 <!-- views/layouts/footer.php -->
-    </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Auto hide alerts after 5 seconds
-        setTimeout(function() {
-            var alerts = document.querySelectorAll('.alert');
-            alerts.forEach(function(alert) {
-                var bsAlert = new bootstrap.Alert(alert);
-                bsAlert.close();
-            });
-        }, 5000);
-    </script>
-</body>
-</html>

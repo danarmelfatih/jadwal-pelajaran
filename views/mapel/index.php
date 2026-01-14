@@ -1,0 +1,109 @@
+<?php include __DIR__ . '/../layouts/header.php'; ?>
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Mata Pelajaran</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="index.php?page=dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item active">Mata Pelajaran</li>
+    </ol>
+
+    <!-- Alert Messages -->
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle"></i> <?= $_SESSION['success'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <?php unset($_SESSION['success']); ?>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-x-circle"></i> <?= $_SESSION['error'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
+
+    <div class="card mb-4">
+        <div class="card-header bg-white">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-0"><i class="bi bi-book"></i> Daftar Mata Pelajaran</h5>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="index.php?page=mapel-create" class="btn btn-primary">
+                        <i class="bi bi-plus-circle"></i> Tambah Mata Pelajaran
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <!-- Search -->
+            <form method="GET" action="index.php" class="row g-3 mb-4">
+                <input type="hidden" name="page" value="mapel">
+                <div class="col-md-9">
+                    <input type="text" name="search" class="form-control" 
+                           placeholder="Cari kode atau nama mata pelajaran..." 
+                           value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-search"></i> Cari
+                    </button>
+                    <a href="index.php?page=mapel" class="btn btn-secondary">
+                        <i class="bi bi-arrow-clockwise"></i> Reset
+                    </a>
+                </div>
+            </form>
+
+            <!-- Table -->
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>No</th>
+                            <th>Kode</th>
+                            <th>Nama Mata Pelajaran</th>
+                            <th>Deskripsi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (isset($mapel_list) && count($mapel_list) > 0): ?>
+                            <?php $no = 1; foreach ($mapel_list as $mapel): ?>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td><span class="badge bg-info"><?= htmlspecialchars($mapel['kode_mapel']) ?></span></td>
+                                    <td><strong><?= htmlspecialchars($mapel['nama_mapel']) ?></strong></td>
+                                    <td><?= htmlspecialchars($mapel['deskripsi'] ?? '-') ?></td>
+                                    <td>
+                                        <a href="index.php?page=mapel-edit&id=<?= $mapel['id'] ?>" 
+                                           class="btn btn-warning btn-sm" title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a href="index.php?page=mapel-delete&id=<?= $mapel['id'] ?>" 
+                                           class="btn btn-danger btn-sm" 
+                                           onclick="return confirm('Yakin ingin menghapus mata pelajaran ini?')"
+                                           title="Hapus">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <div class="alert alert-info mb-0">
+                                        <i class="bi bi-info-circle"></i> Tidak ada data mata pelajaran.
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

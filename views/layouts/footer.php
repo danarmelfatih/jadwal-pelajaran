@@ -127,17 +127,17 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index.php?page=data-guru">
                             <i class="bi bi-people"></i> Data Guru
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index.php?page=data-mapel">
                             <i class="bi bi-book"></i> Mata Pelajaran
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index.php?page=data-kelas">
                             <i class="bi bi-door-open"></i> Data Kelas
                         </a>
                     </li>

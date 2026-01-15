@@ -73,14 +73,35 @@
             transition: margin-left 0.3s ease;
         }
 
+        /* Overlay untuk mobile */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998; /* Di bawah sidebar, di atas konten */
+        }
+
         /* Untuk responsive: sembunyikan sidebar di mobile */
         @media (max-width: 768px) {
             .sidebar {
-                display: none;
+                transform: translateX(-100%); /* Sembunyikan dengan geser ke kiri */
             }
+            
+            .sidebar.show {
+                transform: translateX(0); /* Tampilkan sidebar */
+            }
+
             main {
                 margin-left: 0;
-                padding: 56px 15px 15px 15px;
+                padding: 70px 15px 15px 15px; /* Tambah padding top agar tidak tertutup navbar */
+            }
+
+            .sidebar-overlay.show {
+                display: block;
             }
         }
 
@@ -113,14 +134,23 @@
     </style>
 </head>
 <body>
+    <!-- Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <!-- Navbar -->
     <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php?page=dashboard">
-                <i class="bi bi-calendar-check"></i> Sistem Jadwal Pelajaran
-            </a>
             <div class="d-flex align-items-center">
-                <span class="text-white me-3">
+                <!-- Toggle Button (Mobile Only) -->
+                <button class="navbar-toggler d-md-none me-2" type="button" id="sidebarToggle">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="index.php?page=dashboard">
+                    <i class="bi bi-calendar-check"></i> Sistem Jadwal Pelajaran
+                </a>
+            </div>
+            <div class="d-flex align-items-center">
+                <span class="text-white me-3 d-none d-md-inline">
                     <i class="bi bi-person-circle"></i> <?= $_SESSION['nama_lengkap'] ?> 
                     <span class="badge bg-info"><?= strtoupper($_SESSION['role']) ?></span>
                 </span>
@@ -133,7 +163,7 @@
     </nav>
 
     <!-- Sidebar -->
-    <nav class="sidebar">
+    <nav class="sidebar" id="sidebar">
         <div class="sidebar-sticky">
             <ul class="nav flex-column">
                 <li class="nav-item">
@@ -171,17 +201,17 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link <?= (isset($_GET['page']) && strpos($_GET['page'], 'data-guru') !== false) ? 'active' : '' ?>" href="index.php?page=data-guru">
                             <i class="bi bi-people"></i> Data Guru
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link <?= (isset($_GET['page']) && strpos($_GET['page'], 'data-mapel') !== false) ? 'active' : '' ?>" href="index.php?page=data-mapel">
                             <i class="bi bi-book"></i> Mata Pelajaran
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link <?= (isset($_GET['page']) && strpos($_GET['page'], 'data-kelas') !== false) ? 'active' : '' ?>" href="index.php?page=data-kelas">
                             <i class="bi bi-door-open"></i> Data Kelas
                         </a>
                     </li>
@@ -193,4 +223,25 @@
     <!-- Main Content -->
     <main>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('show');
+                    sidebarOverlay.classList.toggle('show');
+                });
+            }
+
+            if (sidebarOverlay) {
+                sidebarOverlay.addEventListener('click', function() {
+                    sidebar.classList.remove('show');
+                    sidebarOverlay.classList.remove('show');
+                });
+            }
+        });
+    </script>
 <!-- views/layouts/footer.php -->

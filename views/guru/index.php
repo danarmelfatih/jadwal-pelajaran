@@ -40,7 +40,7 @@
         <div class="card-body">
             <!-- Search -->
             <form method="GET" action="index.php" class="row g-3 mb-4">
-                <input type="hidden" name="page" value="guru">
+                <input type="hidden" name="page" value="data-guru">
                 <div class="col-md-9">
                     <input type="text" name="search" class="form-control" 
                            placeholder="Cari nama guru atau email..." 
@@ -50,7 +50,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-search"></i> Cari
                     </button>
-                    <a href="index.php?page=guru" class="btn btn-secondary">
+                    <a href="index.php?page=data-guru" class="btn btn-secondary">
                         <i class="bi bi-arrow-clockwise"></i> Reset
                     </a>
                 </div>

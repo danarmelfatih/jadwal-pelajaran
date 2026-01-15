@@ -28,8 +28,8 @@
                     <i class="bi bi-people" style="font-size: 3rem; opacity: 0.3;"></i>
                 </div>
                 <div class="card-footer d-flex justify-content-between align-items-center">
-                    <small class="text-white-50">Data Guru Aktif</small>
-                    <i class="bi bi-arrow-right text-white-50"></i>
+                    <a class="small text-white stretched-link" href="index.php?page=data-guru">Data Guru Aktif</a>
+                    <div class="small text-white"><i class="bi bi-arrow-right"></i></div>
                 </div>
             </div>
         </div>
@@ -44,8 +44,8 @@
                     <i class="bi bi-book" style="font-size: 3rem; opacity: 0.3;"></i>
                 </div>
                 <div class="card-footer d-flex justify-content-between align-items-center">
-                    <small class="text-white-50">Total Mata Pelajaran</small>
-                    <i class="bi bi-arrow-right text-white-50"></i>
+                    <a class="small text-white stretched-link" href="index.php?page=data-mapel">Total Mata Pelajaran</a>
+                    <div class="small text-white"><i class="bi bi-arrow-right"></i></div>
                 </div>
             </div>
         </div>
@@ -60,8 +60,8 @@
                     <i class="bi bi-door-open" style="font-size: 3rem; opacity: 0.3;"></i>
                 </div>
                 <div class="card-footer d-flex justify-content-between align-items-center">
-                    <small class="text-white-50">Kelas Aktif</small>
-                    <i class="bi bi-arrow-right text-white-50"></i>
+                    <a class="small text-white stretched-link" href="index.php?page=data-kelas">Kelas Aktif</a>
+                    <div class="small text-white"><i class="bi bi-arrow-right"></i></div>
                 </div>
             </div>
         </div>
@@ -76,8 +76,8 @@
                     <i class="bi bi-calendar-event" style="font-size: 3rem; opacity: 0.3;"></i>
                 </div>
                 <div class="card-footer d-flex justify-content-between align-items-center">
-                    <small class="text-white-50">Semua Jadwal</small>
-                    <i class="bi bi-arrow-right text-white-50"></i>
+                    <a class="small text-white stretched-link" href="index.php?page=jadwal">Semua Jadwal</a>
+                    <div class="small text-white"><i class="bi bi-arrow-right"></i></div>
                 </div>
             </div>
         </div>

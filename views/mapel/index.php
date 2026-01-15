@@ -40,7 +40,7 @@
         <div class="card-body">
             <!-- Search -->
             <form method="GET" action="index.php" class="row g-3 mb-4">
-                <input type="hidden" name="page" value="mapel">
+                <input type="hidden" name="page" value="data-mapel">
                 <div class="col-md-9">
                     <input type="text" name="search" class="form-control" 
                            placeholder="Cari kode atau nama mata pelajaran..." 
@@ -50,7 +50,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-search"></i> Cari
                     </button>
-                    <a href="index.php?page=mapel" class="btn btn-secondary">
+                    <a href="index.php?page=data-mapel" class="btn btn-secondary">
                         <i class="bi bi-arrow-clockwise"></i> Reset
                     </a>
                 </div>

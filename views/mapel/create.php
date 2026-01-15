@@ -5,7 +5,7 @@
     <h1 class="mt-4">Tambah Mata Pelajaran</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="index.php?page=dashboard">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="index.php?page=mapel">Mata Pelajaran</a></li>
+        <li class="breadcrumb-item"><a href="index.php?page=data-mapel">Mata Pelajaran</a></li>
         <li class="breadcrumb-item active">Tambah</li>
     </ol>
 
@@ -16,7 +16,7 @@
                     <i class="bi bi-plus-circle"></i> Form Tambah Mata Pelajaran
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="index.php?page=mapel-store">
+                    <form method="POST" action="index.php?page=data-mapel-store">
                         <div class="mb-3">
                             <label class="form-label">Kode Mata Pelajaran <span class="text-danger">*</span></label>
                             <input type="text" name="kode_mapel" class="form-control" 
@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <a href="index.php?page=mapel" class="btn btn-secondary">
+                            <a href="index.php?page=data-mapel" class="btn btn-secondary">
                                 <i class="bi bi-arrow-left"></i> Kembali
                             </a>
                             <button type="submit" class="btn btn-primary">

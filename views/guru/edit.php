@@ -4,7 +4,7 @@
     <h1 class="mt-4">Edit Guru</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="index.php?page=dashboard">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="index.php?page=guru">Data Guru</a></li>
+        <li class="breadcrumb-item"><a href="index.php?page=data-guru">Data Guru</a></li>
         <li class="breadcrumb-item active">Edit Guru</li>
     </ol>
 
@@ -53,20 +53,6 @@
                                 <label class="form-label">Status <span class="text-danger">*</span></label>
                                 <select name="status" class="form-select" required>
                                     <option value="aktif" <?= $guru_data['status'] == 'aktif' ? 'selected' : '' ?>>Aktif</option>
-                                    <option value="nonaktif" <?= $guru_data['status'] == 'nonaktif' ? 'selected' : '' ?>>Nonaktif</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-between">
-                            <a href="index.php?page=guru" class="btn btn-secondary">
-                                <i class="bi bi-arrow-left"></i> Kembali
-                            </a>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="bi bi-save"></i> Update
-                            </button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>

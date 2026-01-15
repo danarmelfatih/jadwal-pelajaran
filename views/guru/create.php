@@ -4,7 +4,7 @@
     <h1 class="mt-4">Tambah Guru</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="index.php?page=dashboard">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="index.php?page=guru">Data Guru</a></li>
+        <li class="breadcrumb-item"><a href="index.php?page=data-guru">Data Guru</a></li>
         <li class="breadcrumb-item active">Tambah Guru</li>
     </ol>
 
@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <a href="index.php?page=guru" class="btn btn-secondary">
+                            <a href="index.php?page=data-guru" class="btn btn-secondary">
                                 <i class="bi bi-arrow-left"></i> Kembali
                             </a>
                             <button type="submit" class="btn btn-primary">

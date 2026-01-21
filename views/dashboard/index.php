@@ -85,53 +85,67 @@
 
     <!-- Jadwal Hari Ini -->
     <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white d-flex align-items-center">
-            <i class="bi bi-calendar-day me-2"></i>
-            <h5 class="mb-0">Jadwal Hari Ini - <?= date('d F Y') ?></h5>
+    <div class="card-header bg-primary text-white">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h5 class="mb-0">
+                    <i class="bi bi-table me-2"></i> Data Jadwal Pelajaran
+                </h5>
+            </div>
         </div>
-        <div class="card-body">
-            <?php if (count($jadwal_today) > 0): ?>
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Jam</th>
-                                <th>Waktu</th>
-                                <th>Kelas</th>
-                                <th>Mata Pelajaran</th>
-                                <th>Guru</th>
-                                <th>Status</th>
+    </div>
+    <div class="card-body">
+        <?php if (count($jadwal_list) > 0): ?>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>No</th>
+                            <th>Hari / Tanggal</th>
+                            <th>Jam</th>
+                            <th>Kelas</th>
+                            <th>Mata Pelajaran</th>
+                            <th>Guru</th>
+                            <th>Ruangan</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1; foreach ($jadwal_list as $jadwal): ?>
+                            <tr class="<?= $jadwal['is_bentrok'] ? 'table-danger' : '' ?>">
+                                <td><?= $no++ ?></td>
+                                <td>
+                                    <strong><?= $jadwal['hari'] ?></strong><br>
+                                    <small class="text-muted"><?= date('d/m/Y', strtotime($jadwal['tanggal'])) ?></small>
+                                </td>
+                                <td>
+                                    <strong>Jam <?= $jadwal['jam_ke'] ?></strong><br>
+                                    <small><?= date('H:i', strtotime($jadwal['waktu_mulai'])) ?> - <?= date('H:i', strtotime($jadwal['waktu_selesai'])) ?></small>
+                                </td>
+                                <td><?= $jadwal['nama_kelas'] ?></td>
+                                <td><?= $jadwal['nama_mapel'] ?></td>
+                                <td><?= $jadwal['nama_guru'] ?></td>
+                                <td><?= $jadwal['ruangan'] ?></td>
+                                <td>
+                                    <?php if ($jadwal['is_bentrok']): ?>
+                                        <span class="badge bg-danger">
+                                            <i class="bi bi-exclamation-triangle"></i> BENTROK
+                                        </span>
+                                    <?php else: ?>
+                                        <span class="badge bg-success">Normal</span>
+                                    <?php endif; ?>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($jadwal_today as $j): ?>
-                                <tr class="<?= $j['is_bentrok'] ? 'table-danger' : '' ?>">
-                                    <td><strong>Jam <?= $j['jam_ke'] ?></strong></td>
-                                    <td><?= date('H:i', strtotime($j['waktu_mulai'])) ?> - <?= date('H:i', strtotime($j['waktu_selesai'])) ?></td>
-                                    <td><?= $j['nama_kelas'] ?></td>
-                                    <td><?= $j['nama_mapel'] ?></td>
-                                    <td><?= $j['nama_guru'] ?></td>
-                                    <td>
-                                        <?php if ($j['is_bentrok']): ?>
-                                            <span class="badge bg-danger">
-                                                <i class="bi bi-exclamation-triangle"></i> BENTROK
-                                            </span>
-                                        <?php else: ?>
-                                            <span class="badge bg-success">Normal</span>
-                                        <?php endif; ?>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            <?php else: ?>
-                <div class="text-center py-4">
-                    <i class="bi bi-info-circle text-info" style="font-size: 3rem;"></i>
-                    <p class="mt-2 text-muted">Tidak ada jadwal untuk hari ini.</p>
-                </div>
-            <?php endif; ?>
-        </div>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php else: ?>
+            <div class="text-center py-4">
+                <i class="bi bi-info-circle text-info" style="font-size: 3rem;"></i>
+                <p class="mt-2 text-muted">Tidak ada data jadwal.</p>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
 

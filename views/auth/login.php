@@ -55,13 +55,33 @@
                             
                             <div class="mb-4">
                                 <label class="form-label"><i class="bi bi-lock"></i> Password</label>
-                                <input type="password" name="password" class="form-control form-control-lg" 
-                                       placeholder="Masukkan password" required>
+                                <div class="input-group">
+                                    <input type="password" name="password" id="password" class="form-control form-control-lg" 
+                                           placeholder="Masukkan password" required>
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </div>
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-lg w-100">
                                 <i class="bi bi-box-arrow-in-right"></i> Login
                             </button>
+                            <script>
+                                const togglePassword = document.querySelector('#togglePassword');
+                                const password = document.querySelector('#password');
+
+                                togglePassword.addEventListener('click', function (e) {
+                                    // toggle the type attribute
+                                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                                    password.setAttribute('type', type);
+                                    
+                                    // toggle the eye icon
+                                    const icon = this.querySelector('i');
+                                    icon.classList.toggle('bi-eye');
+                                    icon.classList.toggle('bi-eye-slash');
+                                });
+                            </script>
                         </form>
 
                         <div class="mt-4 text-center">

@@ -27,7 +27,13 @@ class DashboardController {
         $total_guru = $user->countGuru();
         $total_mapel = $mapel->countAll();
         $total_kelas = $kelas->countAll();
-        $total_jadwal = $jadwal->countAll();
+        
+        // Hitung total jadwal menggunakan query langsung
+        $query = "SELECT COUNT(*) as total FROM jadwal";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $total_jadwal = $row['total'];
         
         // Pending users (untuk admin)
         $total_pending = 0;
@@ -35,8 +41,8 @@ class DashboardController {
             $total_pending = $user->countPending();
         }
 
-        // Jadwal hari ini
-        $jadwal_today = $jadwal->getToday();
+        // PERUBAHAN: Ambil SEMUA jadwal, bukan hanya hari ini
+        $jadwal_list = $jadwal->getAll(); // Ganti dari getToday() ke getAll()
 
         include 'views/dashboard/index.php';
     }
